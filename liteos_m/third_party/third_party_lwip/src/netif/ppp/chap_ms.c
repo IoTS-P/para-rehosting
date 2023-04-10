@@ -543,7 +543,7 @@ static void ChallengeHash(const u_char PeerChallenge[16], const u_char *rchallen
     else
 	user = username;
 
-    lwip_sha1_init(&sha1Context);
+    lwip_sha1it(&sha1Context);
     lwip_sha1_starts(&sha1Context);
     lwip_sha1_update(&sha1Context, PeerChallenge, 16);
     lwip_sha1_update(&sha1Context, rchallenge, 16);
@@ -663,7 +663,7 @@ static void GenerateAuthenticatorResponse(const u_char PasswordHashHash[MD4_SIGN
     u_char	Digest[SHA1_SIGNATURE_SIZE];
     u_char	Challenge[8];
 
-    lwip_sha1_init(&sha1Context);
+    lwip_sha1it(&sha1Context);
     lwip_sha1_starts(&sha1Context);
     lwip_sha1_update(&sha1Context, PasswordHashHash, MD4_SIGNATURE_SIZE);
     lwip_sha1_update(&sha1Context, NTResponse, 24);
@@ -673,7 +673,7 @@ static void GenerateAuthenticatorResponse(const u_char PasswordHashHash[MD4_SIGN
 
     ChallengeHash(PeerChallenge, rchallenge, username, Challenge);
 
-    lwip_sha1_init(&sha1Context);
+    lwip_sha1it(&sha1Context);
     lwip_sha1_starts(&sha1Context);
     lwip_sha1_update(&sha1Context, Digest, sizeof(Digest));
     lwip_sha1_update(&sha1Context, Challenge, sizeof(Challenge));
@@ -723,7 +723,7 @@ static void Set_Start_Key(ppp_pcb *pcb, const u_char *rchallenge, const char *se
     NTPasswordHash(unicodePassword, secret_len * 2, PasswordHash);
     NTPasswordHash(PasswordHash, sizeof(PasswordHash), PasswordHashHash);
 
-    lwip_sha1_init(&sha1Context);
+    lwip_sha1it(&sha1Context);
     lwip_sha1_starts(&sha1Context);
     lwip_sha1_update(&sha1Context, PasswordHashHash, MD4_SIGNATURE_SIZE);
     lwip_sha1_update(&sha1Context, PasswordHashHash, MD4_SIGNATURE_SIZE);
@@ -785,7 +785,7 @@ static void SetMasterKeys(ppp_pcb *pcb, const char *secret, int secret_len, u_ch
     NTPasswordHash(unicodePassword, secret_len * 2, PasswordHash);
     NTPasswordHash(PasswordHash, sizeof(PasswordHash), PasswordHashHash);
 
-    lwip_sha1_init(&sha1Context);
+    lwip_sha1it(&sha1Context);
     lwip_sha1_starts(&sha1Context);
     lwip_sha1_update(&sha1Context, PasswordHashHash, MD4_SIGNATURE_SIZE);
     lwip_sha1_update(&sha1Context, NTResponse, 24);
@@ -800,7 +800,7 @@ static void SetMasterKeys(ppp_pcb *pcb, const char *secret, int secret_len, u_ch
 	s = Magic3;
     else
 	s = Magic2;
-    lwip_sha1_init(&sha1Context);
+    lwip_sha1it(&sha1Context);
     lwip_sha1_starts(&sha1Context);
     lwip_sha1_update(&sha1Context, MasterKey, 16);
     lwip_sha1_update(&sha1Context, mppe_sha1_pad1, SHA1_PAD_SIZE);
@@ -818,7 +818,7 @@ static void SetMasterKeys(ppp_pcb *pcb, const char *secret, int secret_len, u_ch
 	s = Magic2;
     else
 	s = Magic3;
-    lwip_sha1_init(&sha1Context);
+    lwip_sha1it(&sha1Context);
     lwip_sha1_starts(&sha1Context);
     lwip_sha1_update(&sha1Context, MasterKey, 16);
     lwip_sha1_update(&sha1Context, mppe_sha1_pad1, SHA1_PAD_SIZE);

@@ -55,7 +55,7 @@ static uint32_t arm_quick_sort_partition_f32(float32_t *pSrc, int32_t first, int
          * For example, in the extreme case of an ordered array the do-while loop related to i will stop
          * at the first iteration (because pSrc[i]=pSrc[pivot] already), and the loop related to j
          * will stop after (last-first) iterations (when j=pivot=i=first). j is returned and
-         * j+1 is going to be used as pivot by other calls of the function, until j=pivot=last. */ 
+         * j+1 is going to be used as pivot by other calls of the function, until j=pivot=last. */
 
         /* Move indices to the right and to the left */
         if(dir)

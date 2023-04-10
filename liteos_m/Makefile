@@ -139,7 +139,8 @@ INCLUDE_DIRS += \
 -I./third_party/third_party_cmsis/CMSIS/Core/Include \
 -I./third_party/third_party_lwip/src/include \
 -I./sub \
--I./utils
+-I./utils \
+-I./mytest
 
 
 TARGET = liteos
@@ -159,7 +160,8 @@ $(wildcard ./kal/libc/newlib/porting/src/*.c) \
 $(wildcard ./kernel/src/mm/*.c) \
 $(wildcard ./kernel/src/*.c) \
 $(wildcard ./third_party/third_party_bounds_checking_function/src/*.c) \
-$(wildcard ./utils/*.c)
+$(wildcard ./utils/*.c) \
+./mytest/mytest_1.c
 
 PORT = \
 $(wildcard ./sub/*.c)

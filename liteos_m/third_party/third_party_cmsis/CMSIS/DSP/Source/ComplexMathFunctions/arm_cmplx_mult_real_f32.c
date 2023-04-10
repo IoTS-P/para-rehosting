@@ -106,7 +106,7 @@ void arm_cmplx_mult_real_f32(
         blkCnt--;
     }
 
-    blkCnt = (blockSizeC & 3) >> 1; 
+    blkCnt = (blockSizeC & 3) >> 1;
     while (blkCnt > 0U)
     {
       /* C[2 * i    ] = A[2 * i    ] * B[i]. */

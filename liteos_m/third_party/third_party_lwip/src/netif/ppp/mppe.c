@@ -67,7 +67,7 @@ static void mppe_rekey(ppp_mppe_state * state, int initial_key)
 	 * Key Derivation, from RFC 3078, RFC 3079.
 	 * Equivalent to Get_Key() for MS-CHAP as described in RFC 3079.
 	 */
-	lwip_sha1_init(&sha1_ctx);
+	lwip_sha1it(&sha1_ctx);
 	lwip_sha1_starts(&sha1_ctx);
 	lwip_sha1_update(&sha1_ctx, state->master_key, state->keylen);
 	lwip_sha1_update(&sha1_ctx, mppe_sha1_pad1, SHA1_PAD_SIZE);

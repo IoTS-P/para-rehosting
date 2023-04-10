@@ -35,7 +35,7 @@ static void arm_heapify(float32_t * pSrc, uint32_t n, uint32_t i, uint8_t dir)
 {
     /* Put all the elements of pSrc in heap order */
     uint32_t k = i; // Initialize largest/smallest as root 
-    uint32_t l = 2*i + 1; // left = 2*i + 1 
+    uint32_t l = 2*i + 1; // left = 2*i + 1
     uint32_t r = 2*i + 2; // right = 2*i + 2 
     float32_t temp;
 

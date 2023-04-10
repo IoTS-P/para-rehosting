@@ -41,7 +41,7 @@
   @par Introduction
 
   Given a function f defined on the interval [a,b], a set of n nodes x(i) 
-  where a=x(1)<x(2)<...<x(n)=b and a set of n values y(i) = f(x(i)), 
+  where a=x(1)<x(2)<...<x(n)=b and a set of n values y(i) = f(x(i)),
   a cubic spline interpolant S(x) is defined as: 
 
   <pre>
@@ -112,20 +112,20 @@
   c(N)=z(N)
   
   FOR i=N-1, ..., 1
-    c(i)=z(i)-u(i,i+1)c(i+1) 
+    c(i)=z(i)-u(i,i+1)c(i+1)
   </pre>
 
-  c(i) for i=1, ..., n-1 are needed to compute the n-1 polynomials. 
+  c(i) for i=1, ..., n-1 are needed to compute the n-1 polynomials.
   b(i) and d(i) are computed as:
-  - b(i) = [y(i+1)-y(i)]/h(i)-h(i)*[c(i+1)+2*c(i)]/3 
-  - d(i) = [c(i+1)-c(i)]/[3*h(i)] 
+  - b(i) = [y(i+1)-y(i)]/h(i)-h(i)*[c(i+1)+2*c(i)]/3
+  - d(i) = [c(i+1)-c(i)]/[3*h(i)]
   Moreover, a(i)=y(i).
 
  @par Behaviour outside the given intervals
 
   It is possible to compute the interpolated vector for x values outside the 
   input range (xq<x(1); xq>x(n)). The coefficients used to compute the y values for
-  xq<x(1) are going to be the ones used for the first interval, while for xq>x(n) the 
+  xq<x(1) are going to be the ones used for the first interval, while for xq>x(n) the
   coefficients used for the last interval.
  
  */
@@ -235,7 +235,7 @@ void arm_spline_f32(
 
     while(blkCnt2 > 0) 
     { 
-        /* Load [xq(k) xq(k+1) xq(k+2) xq(k+3)] */ 
+        /* Load [xq(k) xq(k+1) xq(k+2) xq(k+3)] */
         xqv = vld1q_f32(pXq);
         pXq+=4;
                                                          

@@ -52,7 +52,7 @@
 #include "arm_helium_utils.h"
 
 void arm_biquad_cascade_df1_f16(
-  const arm_biquad_casd_df1_inst_f16 * S,
+  const arm_biquad_casd_df1st_f16 * S,
   const float16_t * pSrc,
         float16_t * pDst,
         uint32_t blockSize)
@@ -311,7 +311,7 @@ void arm_biquad_cascade_df1_f16(
 
 #else
 void arm_biquad_cascade_df1_f16(
-  const arm_biquad_casd_df1_inst_f16 * S,
+  const arm_biquad_casd_df1st_f16 * S,
   const float16_t * pSrc,
         float16_t * pDst,
         uint32_t blockSize)

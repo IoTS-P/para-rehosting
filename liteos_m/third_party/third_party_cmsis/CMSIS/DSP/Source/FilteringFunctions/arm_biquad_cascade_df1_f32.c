@@ -104,9 +104,9 @@
                    Set the values in the state buffer to zeros before static initialization.
                    The code below statically initializes each of the 3 different data type filter instance structures
   <pre>
-      arm_biquad_casd_df1_inst_f32 S1 = {numStages, pState, pCoeffs};
-      arm_biquad_casd_df1_inst_q15 S2 = {numStages, pState, pCoeffs, postShift};
-      arm_biquad_casd_df1_inst_q31 S3 = {numStages, pState, pCoeffs, postShift};
+      arm_biquad_casd_df1st_f32 S1 = {numStages, pState, pCoeffs};
+      arm_biquad_casd_df1st_q15 S2 = {numStages, pState, pCoeffs, postShift};
+      arm_biquad_casd_df1st_q31 S3 = {numStages, pState, pCoeffs, postShift};
   </pre>
                    where <code>numStages</code> is the number of Biquad stages in the filter;
                    <code>pState</code> is the address of the state buffer;
@@ -165,7 +165,7 @@
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
 #include "arm_helium_utils.h"
 void arm_biquad_cascade_df1_f32(
-  const arm_biquad_casd_df1_inst_f32 * S,
+  const arm_biquad_casd_df1st_f32 * S,
   const float32_t * pSrc,
   float32_t * pDst,
   uint32_t blockSize)
@@ -342,7 +342,7 @@ void arm_biquad_cascade_df1_f32(
 #else
 #if defined(ARM_MATH_NEON)  && !defined(ARM_MATH_AUTOVECTORIZE)
 void arm_biquad_cascade_df1_f32(
-  const arm_biquad_casd_df1_inst_f32 * S,
+  const arm_biquad_casd_df1st_f32 * S,
   const float32_t * pSrc,
   float32_t * pDst,
   uint32_t blockSize)
@@ -461,7 +461,7 @@ void arm_biquad_cascade_df1_f32(
       Xns = *pIn++;
 
       /* acc =  b0 * x[n] + b1 * x[n-1] + b2 * x[n-2] + a1 * y[n-1] + a2 * y[n-2] */
-      acc =  (vgetq_lane_f32(b, 1) * vgetq_lane_f32(Xn, 2)) 
+      acc =  (vgetq_lane_f32(b, 1) * vgetq_lane_f32(Xn, 2))
       + (vgetq_lane_f32(b, 2) * vgetq_lane_f32(Xn, 3)) 
       + (vgetq_lane_f32(b, 3) * Xns) 
       + (vget_lane_f32(a, 0) * vget_lane_f32(Yn, 0)) 
@@ -504,7 +504,7 @@ void arm_biquad_cascade_df1_f32(
 
 #else
 void arm_biquad_cascade_df1_f32(
-  const arm_biquad_casd_df1_inst_f32 * S,
+  const arm_biquad_casd_df1st_f32 * S,
   const float32_t * pSrc,
         float32_t * pDst,
         uint32_t blockSize)

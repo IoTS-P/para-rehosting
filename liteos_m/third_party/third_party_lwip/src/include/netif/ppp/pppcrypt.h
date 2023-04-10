@@ -71,7 +71,7 @@ extern "C" {
 
 #include "netif/ppp/polarssl/sha1.h"
 #define lwip_sha1_context sha1_context
-#define lwip_sha1_init(context)
+#define lwip_sha1it(context)
 #define lwip_sha1_starts sha1_starts
 #define lwip_sha1_update sha1_update
 #define lwip_sha1_finish sha1_finish
@@ -113,7 +113,7 @@ extern "C" {
 #define lwip_md5_free mbedtls_md5_free
 
 #define lwip_sha1_context mbedtls_sha1_context
-#define lwip_sha1_init mbedtls_sha1_init
+#define lwip_sha1it mbedtls_sha1it
 #define lwip_sha1_starts mbedtls_sha1_starts
 #define lwip_sha1_update mbedtls_sha1_update
 #define lwip_sha1_finish mbedtls_sha1_finish

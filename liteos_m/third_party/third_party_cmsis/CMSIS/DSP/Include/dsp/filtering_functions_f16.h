@@ -88,7 +88,7 @@ extern "C"
           uint32_t numStages;      /**< number of 2nd order stages in the filter.  Overall order is 2*numStages. */
           float16_t *pState;       /**< Points to the array of state coefficients.  The array is of length 4*numStages. */
     const float16_t *pCoeffs;      /**< Points to the array of coefficients.  The array is of length 5*numStages. */
-  } arm_biquad_casd_df1_inst_f16;
+  } arm_biquad_casd_df1st_f16;
 
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
   /**
@@ -108,22 +108,22 @@ extern "C"
    * @param[in]  blockSize  number of samples to process.
    */
   void arm_biquad_cascade_df1_f16(
-  const arm_biquad_casd_df1_inst_f16 * S,
+  const arm_biquad_casd_df1st_f16 * S,
   const float16_t * pSrc,
         float16_t * pDst,
         uint32_t blockSize);
 
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
   void arm_biquad_cascade_df1_mve_init_f16(
-      arm_biquad_casd_df1_inst_f16 * S,
+      arm_biquad_casd_df1st_f16 * S,
       uint8_t numStages,
       const float16_t * pCoeffs, 
       arm_biquad_mod_coef_f16 * pCoeffsMod, 
       float16_t * pState);
 #endif
 
-  void arm_biquad_cascade_df1_init_f16(
-        arm_biquad_casd_df1_inst_f16 * S,
+  void arm_biquad_cascade_df1it_f16(
+        arm_biquad_casd_df1st_f16 * S,
         uint8_t numStages,
   const float16_t * pCoeffs,
         float16_t * pState);

@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
- * Title:        arm_biquad_cascade_df1_init_f16.c
+ * Title:        arm_biquad_cascade_df1it_f16.c
  * Description:  Floating-point Biquad cascade DirectFormI(DF1) filter initialization function
  *
  * $Date:        23 April 2021
@@ -75,8 +75,8 @@
  */
 
 
-void arm_biquad_cascade_df1_init_f16(
-        arm_biquad_casd_df1_inst_f16 * S,
+void arm_biquad_cascade_df1it_f16(
+        arm_biquad_casd_df1st_f16 * S,
         uint8_t numStages,
   const float16_t * pCoeffs,
         float16_t * pState)
@@ -135,13 +135,13 @@ static void generateCoefsFastBiquadF16(float16_t b0, float16_t b1, float16_t b2,
     }
 }
 
-void arm_biquad_cascade_df1_mve_init_f16(arm_biquad_casd_df1_inst_f16 * S,
+void arm_biquad_cascade_df1_mve_init_f16(arm_biquad_casd_df1st_f16 * S,
                                          uint8_t numStages,
                                          const float16_t * pCoeffs, 
                                          arm_biquad_mod_coef_f16 * pCoeffsMod, 
                                          float16_t * pState)
 {
-    arm_biquad_cascade_df1_init_f16(S, numStages, (float16_t *)pCoeffsMod, pState);
+    arm_biquad_cascade_df1it_f16(S, numStages, (float16_t *)pCoeffsMod, pState);
 
     /* Generate SIMD friendly modified coefs */
     for (int i = 0; i < numStages; i++)

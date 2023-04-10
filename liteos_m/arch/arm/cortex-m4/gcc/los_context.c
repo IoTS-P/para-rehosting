@@ -158,7 +158,8 @@ VOID HalUserTaskStackInit(TaskContext *context, UINTPTR taskEntry, UINTPTR stack
 #endif
 
 // AFL-fuzz
-#include <RTOS_BE.h>
+#include "RTOS_BE.h"
+#include "mytest_1.h"
 void Setup_Signal_Handler();
 
 LITE_OS_SEC_TEXT_INIT UINT32 ArchStartSchedule(VOID)
@@ -168,8 +169,9 @@ LITE_OS_SEC_TEXT_INIT UINT32 ArchStartSchedule(VOID)
     // OsSchedStart();
     Setup_Signal_Handler();
     // main task which we can alter to execute
-    // PMCU_BE_Task_Create();
-    Start_Scheduler(10000);
+    unsigned int params[] = {0x41414141};
+    PMCU_BE_Task_Create(test_main, params, 1, next_taskid, Tick_Handler_TaskSchedule);
+    Start_Scheduler(next_taskid, 10000);
     // AFL-fuzz ends
     HalStartToRun();
     return LOS_OK; /* never return */

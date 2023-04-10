@@ -39,7 +39,7 @@
   @par Initialization function
 
   The initialization function takes as input two arrays that the user has to allocate:
-  <code>coeffs</code> will contain the b, c, and d coefficients for the (n-1) intervals 
+  <code>coeffs</code> will contain the b, c, and d coefficients for the (n-1) intervals
   (n is the number of known points), hence its size must be 3*(n-1); <code>tempBuffer</code>
   is temporally used for internal computations and its size is n+n-1.
 

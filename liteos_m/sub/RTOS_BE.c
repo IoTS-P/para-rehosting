@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include "RTOS_BE.h"
 
-// #define DEBUG
+#define DEBUG
 
 #define SIG_SUSPEND             SIGUSR1
 #define SIG_RESUME              SIGUSR2
@@ -266,7 +266,10 @@ void PMCU_BE_Task_Create(void* func, unsigned int params[], int param_count, uns
     #endif
 }
 
+int running_task_id = 0;
+
 void Start_Scheduler(unsigned int taskid, unsigned int interval){
+    running_task_id = taskid;
     int i = 0;
     #ifdef DEBUG
         printf("Start_Scheduler()\n");
@@ -310,4 +313,27 @@ void Pthread_Schedule(unsigned int new_task_id, unsigned int run_task_id){
 
 void Reset_Handler(){}
 
-void Tick_Handler_NULL(){}
+void Tick_Handler_TaskSchedule(){
+    int current_thread = 0;
+    for(; current_thread < THREAD_NUMBER; current_thread++){
+        if(pmcu_threads[current_thread].taskid == running_task_id){
+            if(pmcu_threads[current_thread].valid != 1){
+                printf("Fatal error: corrupted running_task_id, running_task is actually invalid!\n");
+                assert(0);
+            }
+            break;
+        }
+    }
+    if(current_thread == THREAD_NUMBER){
+        printf("Fatal error: corrupted running_task_id, not found in thread pool!\n");
+        assert(0);
+    }
+    int next_thread = (current_thread + 1) % THREAD_NUMBER;
+    while(pmcu_threads[next_thread].valid != 1 && next_thread != current_thread){
+        next_thread++;
+        next_thread %= THREAD_NUMBER;
+    }
+    if(current_thread != next_thread){
+        Pthread_Schedule(next_thread, current_thread);
+    }
+}

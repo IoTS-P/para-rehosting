@@ -58,7 +58,7 @@
 #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
 
 void arm_biquad_cascade_df1_q31(
-  const arm_biquad_casd_df1_inst_q31 * S,
+  const arm_biquad_casd_df1st_q31 * S,
   const q31_t * pSrc,
         q31_t * pDst,
         uint32_t blockSize)
@@ -319,7 +319,7 @@ void arm_biquad_cascade_df1_q31(
 }
 #else
 void arm_biquad_cascade_df1_q31(
-  const arm_biquad_casd_df1_inst_q31 * S,
+  const arm_biquad_casd_df1st_q31 * S,
   const q31_t * pSrc,
         q31_t * pDst,
         uint32_t blockSize)

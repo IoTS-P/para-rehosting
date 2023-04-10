@@ -723,7 +723,7 @@ void arm_conv_f32(
       }
 
       accum = vpadd_f32(vget_low_f32(res), vget_high_f32(res));
-      sum += accum[0] + accum[1]; 
+      sum += accum[0] + accum[1];
 
       /* If the srcBLen is not a multiple of 4, compute any remaining MACs here.
        ** No loop unrolling is used. */
@@ -872,7 +872,7 @@ void arm_conv_f32(
     }
 
     accum = vpadd_f32(vget_low_f32(res), vget_high_f32(res));
-    sum += accum[0] + accum[1]; 
+    sum += accum[0] + accum[1];
 
 #else
     while (k > 0U)

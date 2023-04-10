@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
- * Title:        arm_biquad_cascade_df1_init_q15.c
+ * Title:        arm_biquad_cascade_df1it_q15.c
  * Description:  Q15 Biquad cascade DirectFormI(DF1) filter initialization function
  *
  * $Date:        23 April 2021
@@ -68,8 +68,8 @@
                    The state variables are updated after each block of data is processed; the coefficients are untouched.
  */
 
-void arm_biquad_cascade_df1_init_q15(
-        arm_biquad_casd_df1_inst_q15 * S,
+void arm_biquad_cascade_df1it_q15(
+        arm_biquad_casd_df1st_q15 * S,
         uint8_t numStages,
   const q15_t * pCoeffs,
         q15_t * pState,

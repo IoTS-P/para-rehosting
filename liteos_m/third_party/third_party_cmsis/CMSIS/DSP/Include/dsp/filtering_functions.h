@@ -250,7 +250,7 @@ extern "C"
           q15_t *pState;           /**< Points to the array of state coefficients.  The array is of length 4*numStages. */
     const q15_t *pCoeffs;          /**< Points to the array of coefficients.  The array is of length 5*numStages. */
           int8_t postShift;        /**< Additional shift, in bits, applied to each output sample. */
-  } arm_biquad_casd_df1_inst_q15;
+  } arm_biquad_casd_df1st_q15;
 
   /**
    * @brief Instance structure for the Q31 Biquad cascade filter.
@@ -261,7 +261,7 @@ extern "C"
           q31_t *pState;           /**< Points to the array of state coefficients.  The array is of length 4*numStages. */
     const q31_t *pCoeffs;          /**< Points to the array of coefficients.  The array is of length 5*numStages. */
           uint8_t postShift;       /**< Additional shift, in bits, applied to each output sample. */
-  } arm_biquad_casd_df1_inst_q31;
+  } arm_biquad_casd_df1st_q31;
 
   /**
    * @brief Instance structure for the floating-point Biquad cascade filter.
@@ -271,7 +271,7 @@ extern "C"
           uint32_t numStages;      /**< number of 2nd order stages in the filter.  Overall order is 2*numStages. */
           float32_t *pState;       /**< Points to the array of state coefficients.  The array is of length 4*numStages. */
     const float32_t *pCoeffs;      /**< Points to the array of coefficients.  The array is of length 5*numStages. */
-  } arm_biquad_casd_df1_inst_f32;
+  } arm_biquad_casd_df1st_f32;
 
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
   /**
@@ -291,7 +291,7 @@ extern "C"
    * @param[in]  blockSize  number of samples to process.
    */
   void arm_biquad_cascade_df1_q15(
-  const arm_biquad_casd_df1_inst_q15 * S,
+  const arm_biquad_casd_df1st_q15 * S,
   const q15_t * pSrc,
         q15_t * pDst,
         uint32_t blockSize);
@@ -304,8 +304,8 @@ extern "C"
    * @param[in]     pState     points to the state buffer.
    * @param[in]     postShift  Shift to be applied to the output. Varies according to the coefficients format
    */
-  void arm_biquad_cascade_df1_init_q15(
-        arm_biquad_casd_df1_inst_q15 * S,
+  void arm_biquad_cascade_df1it_q15(
+        arm_biquad_casd_df1st_q15 * S,
         uint8_t numStages,
   const q15_t * pCoeffs,
         q15_t * pState,
@@ -319,7 +319,7 @@ extern "C"
    * @param[in]  blockSize  number of samples to process.
    */
   void arm_biquad_cascade_df1_fast_q15(
-  const arm_biquad_casd_df1_inst_q15 * S,
+  const arm_biquad_casd_df1st_q15 * S,
   const q15_t * pSrc,
         q15_t * pDst,
         uint32_t blockSize);
@@ -332,7 +332,7 @@ extern "C"
    * @param[in]  blockSize  number of samples to process.
    */
   void arm_biquad_cascade_df1_q31(
-  const arm_biquad_casd_df1_inst_q31 * S,
+  const arm_biquad_casd_df1st_q31 * S,
   const q31_t * pSrc,
         q31_t * pDst,
         uint32_t blockSize);
@@ -345,7 +345,7 @@ extern "C"
    * @param[in]  blockSize  number of samples to process.
    */
   void arm_biquad_cascade_df1_fast_q31(
-  const arm_biquad_casd_df1_inst_q31 * S,
+  const arm_biquad_casd_df1st_q31 * S,
   const q31_t * pSrc,
         q31_t * pDst,
         uint32_t blockSize);
@@ -358,8 +358,8 @@ extern "C"
    * @param[in]     pState     points to the state buffer.
    * @param[in]     postShift  Shift to be applied to the output. Varies according to the coefficients format
    */
-  void arm_biquad_cascade_df1_init_q31(
-        arm_biquad_casd_df1_inst_q31 * S,
+  void arm_biquad_cascade_df1it_q31(
+        arm_biquad_casd_df1st_q31 * S,
         uint8_t numStages,
   const q31_t * pCoeffs,
         q31_t * pState,
@@ -373,7 +373,7 @@ extern "C"
    * @param[in]  blockSize  number of samples to process.
    */
   void arm_biquad_cascade_df1_f32(
-  const arm_biquad_casd_df1_inst_f32 * S,
+  const arm_biquad_casd_df1st_f32 * S,
   const float32_t * pSrc,
         float32_t * pDst,
         uint32_t blockSize);
@@ -388,15 +388,15 @@ extern "C"
    */
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
   void arm_biquad_cascade_df1_mve_init_f32(
-      arm_biquad_casd_df1_inst_f32 * S,
+      arm_biquad_casd_df1st_f32 * S,
       uint8_t numStages,
       const float32_t * pCoeffs, 
       arm_biquad_mod_coef_f32 * pCoeffsMod, 
       float32_t * pState);
 #endif
   
-  void arm_biquad_cascade_df1_init_f32(
-        arm_biquad_casd_df1_inst_f32 * S,
+  void arm_biquad_cascade_df1it_f32(
+        arm_biquad_casd_df1st_f32 * S,
         uint8_t numStages,
   const float32_t * pCoeffs,
         float32_t * pState);

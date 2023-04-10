@@ -301,7 +301,7 @@ snmpv3_password_to_key_sha(
   u8_t i;
   u32_t count = 0;
 
-  mbedtls_sha1_init(&SH); /* initialize SHA */
+  mbedtls_sha1it(&SH); /* initialize SHA */
   mbedtls_sha1_starts(&SH);
 
   /**********************************************/

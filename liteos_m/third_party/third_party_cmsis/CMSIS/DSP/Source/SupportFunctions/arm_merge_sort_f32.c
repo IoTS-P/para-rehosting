@@ -33,7 +33,7 @@
 static void topDownMerge(float32_t * pA, uint32_t begin, uint32_t middle, uint32_t end, float32_t * pB, uint8_t dir)
 {
     /* Left  array is pA[begin:middle-1]
-     * Right Array is pA[middle:end-1] 
+     * Right Array is pA[middle:end-1]
      * They are merged in pB
      */
 

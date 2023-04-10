@@ -54,11 +54,11 @@
  @remark
                    Refer to \ref arm_biquad_cascade_df1_q15() for a slower implementation of this function
                    which uses 64-bit accumulation to avoid wrap around distortion. Both the slow and the fast versions use the same instance structure.
-                   Use the function \ref arm_biquad_cascade_df1_init_q15() to initialize the filter structure.
+                   Use the function \ref arm_biquad_cascade_df1it_q15() to initialize the filter structure.
  */
 
 void arm_biquad_cascade_df1_fast_q15(
-  const arm_biquad_casd_df1_inst_q15 * S,
+  const arm_biquad_casd_df1st_q15 * S,
   const q15_t * pSrc,
         q15_t * pDst,
         uint32_t blockSize)

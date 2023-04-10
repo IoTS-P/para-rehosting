@@ -65,9 +65,9 @@ __STATIC_FORCEINLINE q31_t divide(q31_t n, q31_t d)
   // Our division algorithm has a shift. So it is returning a scaled value sh.
   // So we need a << shift to convert 1/ sh to 1/h.
   // In below code, we are organizing the computation differently. Instead of computing:
-  // 1 / h (1 - l / h) 
+  // 1 / h (1 - l / h)
   // we are computing
-  // 1 / h (2 - (l + h) / h) 
+  // 1 / h (2 - (l + h) / h)
   // 1 / h (2 - d / h)
   // Also, we are not computing 1/h in Q15 but in Q14.
   // 2 is expressed in Q30.
