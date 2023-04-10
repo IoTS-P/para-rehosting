@@ -8,8 +8,10 @@ int Fault_BE();
 unsigned int PMCU_BE_Disable_Irq();
 unsigned int PMCU_BE_Enable_Irq();
 // Systick
+void Setup_Ticker(unsigned int time_interval);
 uint32_t PMCU_BE_Get_Systick();
 // Task
+static int next_taskid = 1;
 void PMCU_BE_Task_Create(void* func, unsigned int params[], int param_count, unsigned int taskid, void (*tick_handler)(void));
 void Start_Scheduler(unsigned int taskid, unsigned int interval);
 void Pthread_Schedule(unsigned int new_task_id, unsigned int run_task_id);

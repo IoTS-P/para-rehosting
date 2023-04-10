@@ -157,10 +157,20 @@ VOID HalUserTaskStackInit(TaskContext *context, UINTPTR taskEntry, UINTPTR stack
 }
 #endif
 
+// AFL-fuzz
+#include <RTOS_BE.h>
+void Setup_Signal_Handler();
+
 LITE_OS_SEC_TEXT_INIT UINT32 ArchStartSchedule(VOID)
 {
     (VOID)LOS_IntLock();
-    OsSchedStart();
+    // AFL-fuzz
+    // OsSchedStart();
+    Setup_Signal_Handler();
+    // main task which we can alter to execute
+    // PMCU_BE_Task_Create();
+    Start_Scheduler(10000);
+    // AFL-fuzz ends
     HalStartToRun();
     return LOS_OK; /* never return */
 }

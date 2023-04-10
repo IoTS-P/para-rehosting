@@ -309,3 +309,5 @@ void Pthread_Schedule(unsigned int new_task_id, unsigned int run_task_id){
 }
 
 void Reset_Handler(){}
+
+void Tick_Handler_NULL(){}
