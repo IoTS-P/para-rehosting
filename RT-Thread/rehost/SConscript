@@ -1,0 +1,10 @@
+Import('RTT_ROOT')
+from building import *
+
+cwd = GetCurrentDir()
+
+src = Glob('*.c')
+
+group = DefineGroup('rehost', src, depend = ['RT_REHOST'], CPPPATH = [cwd])
+
+Return('group')
