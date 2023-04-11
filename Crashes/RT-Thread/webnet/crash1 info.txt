@@ -1,0 +1,10 @@
+原仓库 https://github.com/RT-Thread-packages/webnet
+crash 函数 /src/wn_request.c line233 webnet_request_parse_method https://github.com/RT-Thread-packages/webnet/blob/master/src/wn_request.c
+函数功能：解析 http 请求的请求参数首部行
+crash 描述
+228 行检查是否有\r\n, 之后读取请求参数和路径，
+282 行 strstr 调用没有检查是否返回空指针，访问 NULL 发生 crash
+攻击方式
+构造一个包含 \r\n 的报文，但其会作为请求路径的一部分通过检查，例如
+GET /path/to/file\r\n.html HTTP/1.1
+228 行的判断通过，但 282 行对 HTTP/1.1 进行 strstr 调用返回 NULL
