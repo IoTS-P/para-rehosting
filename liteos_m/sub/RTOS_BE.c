@@ -352,6 +352,6 @@ void Tick_Handler_TaskSchedule(){
 #ifdef DEBUG
         printf("Tick_Handler_TaskSchedule: No other task found, continue executing previous task.\n");
 #endif
-        Pthread_Schedule(next_thread, current_thread);
+        // Pthread_Schedule(next_thread, current_thread);
     }
 }
